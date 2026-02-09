@@ -249,9 +249,13 @@ export default function SuperadminDashboard() {
           <Text style={styles.greeting}>{greeting},</Text>
           <Text style={styles.username}>{name}</Text>
         </View>
-        <View style={styles.avatarWrap}>
+        <TouchableOpacity
+          onPress={() => router.push("/(superadmin)/profile")}
+          style={styles.avatarWrap}
+          activeOpacity={0.85}
+        >
           <Text style={styles.avatarText}>{String(name).charAt(0).toUpperCase()}</Text>
-        </View>
+        </TouchableOpacity>
       </View>
 
       <ScrollView

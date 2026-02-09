@@ -1,13 +1,11 @@
-import React from "react";
 import { Redirect, Tabs } from "expo-router";
-import { Pressable, StyleSheet, Text, View } from "react-native";
 import {
   CalendarCheck2,
   CirclePlus,
   LayoutGrid,
-  UserCircle2,
   Wallet,
 } from "lucide-react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useAuth } from "../../src/context/authContext";
 
 function TabIcon({ Icon, color, focused }) {
@@ -36,7 +34,7 @@ export default function SuperAdminLayout() {
 
   if (loading) return null;
   if (!user) return <Redirect href="/(auth)/login" />;
-  if (user.role !== "SUPER_ADMIN")
+  if (String(user.role || "").toUpperCase() !== "SUPER_ADMIN")
     return <Redirect href="/(auth)/login" />;
 
   return (
@@ -128,8 +126,7 @@ export default function SuperAdminLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: "Profile",
-          tabBarIcon: ({ color, focused }) => <TabIcon Icon={UserCircle2} color={color} focused={focused} />,
+          href: null,
         }}
       />
     </Tabs>

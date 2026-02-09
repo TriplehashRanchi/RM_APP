@@ -11,6 +11,8 @@ const ROLE_HOME_MAP = {
   EMPLOYEE: "/(employee)/dashboard",
 };
 
+const normalizeRole = (role) => String(role || "").trim().toUpperCase();
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -58,7 +60,7 @@ export function AuthProvider({ children }) {
     }
 
     if (user && inAuthGroup) {
-      const target = ROLE_HOME_MAP[user.role] || "/(employee)/dashboard";
+      const target = ROLE_HOME_MAP[normalizeRole(user.role)] || "/(employee)/dashboard";
       router.replace(target);
     }
   }, [user, loading, segments]);
@@ -75,7 +77,7 @@ export function AuthProvider({ children }) {
         await setToken(data.token);
         setUser(data.user);
 
-        const target = ROLE_HOME_MAP[data.user.role] || "/(employee)/dashboard";
+        const target = ROLE_HOME_MAP[normalizeRole(data.user.role)] || "/(employee)/dashboard";
         router.replace(target);
 
         return { success: true };
@@ -96,7 +98,8 @@ export function AuthProvider({ children }) {
 
   const checkPermission = useCallback((allowedRoles) => {
     if (!user) return false;
-    return allowedRoles.includes(user.role);
+    const currentRole = normalizeRole(user.role);
+    return allowedRoles.map(normalizeRole).includes(currentRole);
   }, [user]);
 
   const value = useMemo(

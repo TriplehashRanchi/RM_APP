@@ -6,7 +6,7 @@ export default function HrLayout() {
 
   if (loading) return null;
   if (!user) return <Redirect href="/(auth)/login" />;
-  if (user.role !== "HR_ADMIN") return <Redirect href="/(auth)/login" />;
+  if (String(user.role || "").toUpperCase() !== "HR_ADMIN") return <Redirect href="/(auth)/login" />;
 
   return <Stack screenOptions={{ headerShown: false }} />;
 }
