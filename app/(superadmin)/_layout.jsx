@@ -2,8 +2,8 @@ import { Redirect, Tabs } from "expo-router";
 import {
   CalendarCheck2,
   CirclePlus,
+  FolderOpen,
   LayoutGrid,
-  Wallet,
 } from "lucide-react-native";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useAuth } from "../../src/context/authContext";
@@ -43,37 +43,38 @@ export default function SuperAdminLayout() {
         headerShown: false,
         sceneStyle: {
           backgroundColor: "#05070b",
-          paddingBottom: 92,
+          paddingBottom: 96,
         },
         tabBarActiveTintColor: "#0f172a",
-        tabBarInactiveTintColor: "#64748b",
+        tabBarInactiveTintColor: "#6b7280",
+        tabBarHideOnKeyboard: true,
         tabBarStyle: {
           position: "absolute",
-          left: 14,
-          right: 14,
-          bottom: 12,
+          left: 12,
+          right: 12,
+          bottom: 10,
           backgroundColor: "#f8fafc",
           overflow: "visible",
           borderTopWidth: 0,
           borderWidth: 1,
-          borderColor: "rgba(15,23,42,0.08)",
-          borderRadius: 30,
-          height: 82,
-          paddingBottom: 11,
-          paddingTop: 10,
-          elevation: 22,
+          borderColor: "rgba(15,23,42,0.1)",
+          borderRadius: 26,
+          height: 84,
+          paddingBottom: 10,
+          paddingTop: 8,
+          elevation: 18,
           shadowColor: "#000",
-          shadowOpacity: 0.15,
-          shadowRadius: 24,
-          shadowOffset: { width: 0, height: 12 },
+          shadowOpacity: 0.12,
+          shadowRadius: 18,
+          shadowOffset: { width: 0, height: 10 },
         },
         tabBarItemStyle: {
-          paddingTop: 1,
+          paddingTop: 2,
         },
         tabBarLabelStyle: {
-          fontSize: 10.5,
+          fontSize: 10,
           fontWeight: "700",
-          marginTop: 1,
+          marginTop: 2,
         },
       }}
     >
@@ -101,10 +102,10 @@ export default function SuperAdminLayout() {
       />
 
       <Tabs.Screen
-        name="payroll"
+        name="docs"
         options={{
-          title: "Payroll",
-          tabBarIcon: ({ color, focused }) => <TabIcon Icon={Wallet} color={color} focused={focused} />,
+          title: "Docs",
+          tabBarIcon: ({ color, focused }) => <TabIcon Icon={FolderOpen} color={color} focused={focused} />,
         }}
       />
 
@@ -137,49 +138,49 @@ const styles = StyleSheet.create({
   iconWrap: {
     alignItems: "center",
     justifyContent: "center",
-    width: 32,
-    height: 24,
-    borderRadius: 9,
+    width: 34,
+    height: 26,
+    borderRadius: 10,
   },
   iconWrapFocused: {
-    backgroundColor: "#e0f2fe",
+    backgroundColor: "#dbeafe",
   },
   centerBtnOuter: {
     alignItems: "center",
     justifyContent: "flex-start",
-    marginTop: -33,
+    marginTop: -30,
   },
   centerBtnHalo: {
     position: "absolute",
-    top: 2,
-    width: 66,
-    height: 66,
-    borderRadius: 33,
-    backgroundColor: "rgba(14,165,233,0.18)",
+    top: 3,
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: "rgba(14,165,233,0.16)",
   },
   centerBtn: {
-    width: 62,
-    height: 62,
-    borderRadius: 31,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
     backgroundColor: "#0ea5e9",
-    borderWidth: 5,
+    borderWidth: 4,
     borderColor: "#ffffff",
     alignItems: "center",
     justifyContent: "center",
-    elevation: 12,
+    elevation: 10,
     shadowColor: "#0369a1",
-    shadowOpacity: 0.36,
-    shadowRadius: 14,
-    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 6 },
   },
   centerBtnFocused: {
     backgroundColor: "#0369a1",
   },
   centerLabel: {
-    marginTop: 3,
+    marginTop: 4,
     fontSize: 10,
     fontWeight: "700",
-    color: "#475569",
+    color: "#64748b",
   },
   centerLabelFocused: {
     color: "#0f172a",

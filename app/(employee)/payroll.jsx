@@ -97,7 +97,7 @@ export default function EmployeePayrollPage() {
   const [downloading, setDownloading] = useState(false);
   const [toast, setToast] = useState(null);
 
-  const employeeId = user?.employee_id;
+  const employeeId = user?.employee_id || user?.employeeId || user?.id;
 
   // --- DATA LOADING ---
 
