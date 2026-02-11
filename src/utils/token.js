@@ -10,6 +10,8 @@ export async function getToken() {
   return await SecureStore.getItemAsync(TOKEN_KEY);
 }
 
+
+
 export async function removeToken() {
   await SecureStore.deleteItemAsync(TOKEN_KEY);
 }
