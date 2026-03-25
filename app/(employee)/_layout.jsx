@@ -1,6 +1,7 @@
 import { Redirect, Tabs } from "expo-router";
 import { CalendarCheck2, ClipboardList, LayoutGrid, Wallet } from "lucide-react-native";
 import { StyleSheet, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAuth } from "../../src/context/authContext";
 
 function TabIcon({ Icon, color, focused }) {
@@ -13,6 +14,7 @@ function TabIcon({ Icon, color, focused }) {
 
 export default function EmployeeLayout() {
   const { user, loading } = useAuth();
+  const insets = useSafeAreaInsets();
 
   if (loading) return null;
   if (!user) return <Redirect href="/(auth)/login" />;
@@ -24,7 +26,7 @@ export default function EmployeeLayout() {
         headerShown: false,
         sceneStyle: {
           backgroundColor: "#05070b",
-          paddingBottom: 92,
+          paddingBottom: 98 + Math.max(insets.bottom, 8),
         },
         tabBarActiveTintColor: "#0f172a",
         tabBarInactiveTintColor: "#64748b",
@@ -32,15 +34,15 @@ export default function EmployeeLayout() {
           position: "absolute",
           left: 14,
           right: 14,
-          bottom: 12,
+          bottom: Math.max(insets.bottom, 8),
           backgroundColor: "#f8fafc",
           overflow: "visible",
           borderTopWidth: 0,
           borderWidth: 1,
           borderColor: "rgba(15,23,42,0.08)",
           borderRadius: 30,
-          height: 82,
-          paddingBottom: 11,
+          height: 72 + Math.max(insets.bottom, 8),
+          paddingBottom: Math.max(insets.bottom, 10),
           paddingTop: 10,
           elevation: 22,
           shadowColor: "#000",
