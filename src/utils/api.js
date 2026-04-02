@@ -45,7 +45,11 @@ api.interceptors.request.use(async (config) => {
 api.interceptors.response.use(
   (res) => res,
   async (error) => {
-    if (error.response?.status === 401) {
+    const status = error.response?.status;
+    const requestUrl = String(error.config?.url || "");
+    const isLoginRequest = /\/auth\/login\/?$/i.test(requestUrl);
+
+    if (status === 401 && !isLoginRequest) {
       await removeToken();
       router.replace("/(auth)/login?error=session_expired");
     }

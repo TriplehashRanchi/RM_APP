@@ -1,6 +1,6 @@
+import * as FileSystem from "expo-file-system/legacy";
 import * as Print from "expo-print";
 import * as Sharing from "expo-sharing";
-import * as FileSystem from "expo-file-system/legacy";
 
 function safeText(value) {
   return String(value ?? "")
@@ -193,7 +193,7 @@ function getReceiptHtml(payload) {
 
     <div class="system-msg">-- This is a system-generated document. --</div>
     <div class="brand-footer">
-      Powered by <b>Triple Hash Payroll</b> ${website ? `| ${safeText(website)}` : ""}
+      Powered by <b>RM Club Payroll</b> ${website ? `| ${safeText(website)}` : ""}
     </div>
   </div>
 </body>

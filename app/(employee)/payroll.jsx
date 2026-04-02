@@ -190,22 +190,28 @@ export default function EmployeePayrollPage() {
     setDownloading(true);
     try {
         await downloadPayrollReceiptPdf({
-            // ... (keep existing params logic from your code)
             companyName: user?.company_name || "Company",
             month: activeRun.month,
             payrollRunId: activeRun.id,
             payrollItemId: activeItem.id,
             employeeName: user?.name,
             employeeCode: user?.emp_id,
+            department: user?.department_name,
             netPay: activeItem.net_pay,
-            // ... map other fields
             basicSalary: activeItem.basic_salary,
             hra: activeItem.hra,
             otherAllowances: activeItem.other_allowances,
-            deductions: activeItem.deductions,
             grossPay: activeItem.gross_pay,
-            // Simple mapping for demo
-            status: activeItem.run_status
+            deductions: activeItem.deductions,
+            pfContribution: activeItem.pf_contribution,
+            professionalTax: activeItem.professional_tax,
+            tdsEstimate: activeItem.tds_estimate,
+            esiContribution: activeItem.esi_contribution,
+            paidDays: activeItem.paid_days,
+            workingDays: activeItem.working_days ?? activeItem.total_working_days ?? 30,
+            unpaidDays: activeItem.unpaid_days,
+            paidAt: activeItem.paid_at,
+            status: activeItem.run_status,
         });
         setToast({ msg: "Receipt Saved!", type: "success" });
     } catch (e) {
@@ -561,3 +567,4 @@ const styles = StyleSheet.create({
   toastError: { backgroundColor: "rgba(136, 19, 55, 0.9)", borderColor: "#E11D48" },
   toastText: { color: "#FFF", fontSize: 13, fontWeight: "600" },
 });
+

@@ -14,13 +14,7 @@ import { useAuth } from "../../src/context/authContext";
 import api from "../../src/utils/api";
 
 function getGreeting() {
-  const nowInIndia = new Date(
-    new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
-  );
-  const h = nowInIndia.getHours();
-  if (h < 12) return "Good Morning";
-  if (h < 17) return "Good Afternoon";
-  return "Good Evening";
+  return "Hey There";
 }
 
 function formatDate(value) {

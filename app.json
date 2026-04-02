@@ -4,7 +4,7 @@
     "slug": "rmclub-payroll",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/play_store_512.png",
     "scheme": "rmclubpayroll",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -12,11 +12,13 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.rmclub.rmclubpayroll",
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "foregroundImage": "./assets/images/play_store_512.png",
+        "backgroundImage": "./assets/images/play_store_512.png",
+        "monochromeImage": "./assets/images/play_store_512.png"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
@@ -44,6 +46,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "cb96b7d1-63e4-4908-9baf-0229d782d43e"
+      }
+    },
+    "owner": "triplehash"
   }
 }
