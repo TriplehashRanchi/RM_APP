@@ -4,8 +4,10 @@ import {
   CirclePlus,
   FolderOpen,
   LayoutGrid,
+  MessageSquareText,
 } from "lucide-react-native";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAuth } from "../../src/context/authContext";
 
 function TabIcon({ Icon, color, focused }) {
@@ -31,6 +33,7 @@ function CenterCompanyButton({ onPress, accessibilityState }) {
 
 export default function SuperAdminLayout() {
   const { user, loading } = useAuth();
+  const insets = useSafeAreaInsets();
 
   if (loading) return null;
   if (!user) return <Redirect href="/(auth)/login" />;
@@ -43,7 +46,7 @@ export default function SuperAdminLayout() {
         headerShown: false,
         sceneStyle: {
           backgroundColor: "#05070b",
-          paddingBottom: 96,
+          paddingBottom: 102 + Math.max(insets.bottom, 8),
         },
         tabBarActiveTintColor: "#0f172a",
         tabBarInactiveTintColor: "#6b7280",
@@ -52,15 +55,15 @@ export default function SuperAdminLayout() {
           position: "absolute",
           left: 12,
           right: 12,
-          bottom: 10,
+          bottom: Math.max(insets.bottom, 8),
           backgroundColor: "#f8fafc",
           overflow: "visible",
           borderTopWidth: 0,
           borderWidth: 1,
           borderColor: "rgba(15,23,42,0.1)",
           borderRadius: 26,
-          height: 84,
-          paddingBottom: 10,
+          height: 74 + Math.max(insets.bottom, 8),
+          paddingBottom: Math.max(insets.bottom, 10),
           paddingTop: 8,
           elevation: 18,
           shadowColor: "#000",
@@ -106,6 +109,14 @@ export default function SuperAdminLayout() {
         options={{
           title: "Docs",
           tabBarIcon: ({ color, focused }) => <TabIcon Icon={FolderOpen} color={color} focused={focused} />,
+        }}
+      />
+
+      <Tabs.Screen
+        name="support"
+        options={{
+          title: "Support",
+          tabBarIcon: ({ color, focused }) => <TabIcon Icon={MessageSquareText} color={color} focused={focused} />,
         }}
       />
 
